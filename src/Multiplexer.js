@@ -8,7 +8,7 @@ export default class Multiplexer extends Emitter {
 
   constructor(options) {
     super()
-    this.options = {...options, ...Multiplexer.DEFAULTS}
+    this.options = {...Multiplexer.DEFAULTS, ...options}
     this.reset()
     this.intervalId = setInterval(::this.onDrain, this.options.duration)
   }
