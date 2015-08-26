@@ -10,7 +10,7 @@ export default class Multiplexer extends Emitter {
     super()
     this.options = {...Multiplexer.DEFAULTS, ...options}
     this.reset()
-    this.intervalId = setInterval(::this.onDrain, this.options.duration)
+    this.intervalId = setInterval(::this.drain, this.options.duration)
   }
 
   /**
@@ -58,11 +58,11 @@ export default class Multiplexer extends Emitter {
   }
 
   /**
-   * Reset and emit "drain"
+   * Reset and emit "drain".
    *
    * @api private
    */
-  onDrain() {
+  drain() {
     let {buffer} = this
     if (!buffer.length) return
     this.reset()
