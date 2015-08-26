@@ -1,6 +1,6 @@
 {
   "name": "lpio-multiplexer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Multiplexer for node and browser.",
   "repository": "https://github.com/lpio/lpio-multiplexer-js.git",
   "main": "./lib/Multiplexer.js",
@@ -23,7 +23,8 @@
     "all": "npm run lint && npm run build",
     "lint": "eslint ./src",
     "clean": "rm -fr ./lib/*",
-    "build": "npm run clean && babel src --out-dir lib"
+    "build": "npm run clean && babel src --out-dir lib",
+    "prepublish": "npm run all"
   },
   "license": "MIT"
 }
