@@ -9,8 +9,27 @@ export default class Multiplexer extends Emitter {
   constructor(options) {
     super()
     this.options = {...Multiplexer.DEFAULTS, ...options}
-    this.reset()
+    this.buffer = []
+  }
+
+  /**
+   * Start periodically drain.
+   *
+   * @api public
+   */
+  start() {
     this.intervalId = setInterval(::this.drain, this.options.duration)
+    return this
+  }
+
+  /**
+   * Stop periodically drain.
+   *
+   * @api public
+   */
+  stop() {
+    clearInterval(this.intervalId)
+    return this
   }
 
   /**
@@ -52,7 +71,7 @@ export default class Multiplexer extends Emitter {
    * @api public
    */
   destroy() {
-    clearInterval(this.intervalId)
+    this.stop()
     this.removeAllListeners()
     return this
   }

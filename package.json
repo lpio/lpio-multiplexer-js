@@ -1,6 +1,6 @@
 {
   "name": "lpio-multiplexer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Multiplexer for node and browser.",
   "repository": "https://github.com/lpio/lpio-multiplexer-js.git",
   "main": "./lib/Multiplexer.js",
