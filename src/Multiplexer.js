@@ -18,6 +18,8 @@ export default class Multiplexer extends Emitter {
    * @api public
    */
   start() {
+    // Make sure we can't run 2 intervals.
+    this.stop()
     this.intervalId = setInterval(::this.drain, this.options.duration)
     return this
   }
