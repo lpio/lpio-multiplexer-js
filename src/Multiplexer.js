@@ -10,6 +10,7 @@ export default class Multiplexer extends Emitter {
     super()
     this.options = {...Multiplexer.DEFAULTS, ...options}
     this.buffer = []
+    this.active = false
   }
 
   /**
@@ -19,7 +20,8 @@ export default class Multiplexer extends Emitter {
    */
   start() {
     // Make sure we can't run 2 intervals.
-    this.stop()
+    if (this.active) return this
+    this.active = true
     this.intervalId = setInterval(::this.drain, this.options.duration)
     return this
   }
@@ -30,6 +32,7 @@ export default class Multiplexer extends Emitter {
    * @api public
    */
   stop() {
+    this.active = false
     clearInterval(this.intervalId)
     return this
   }
